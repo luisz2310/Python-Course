@@ -1,0 +1,40 @@
+# Given a list of ints, return True if the array contains a 3 next to a 3 somewhere.
+#     has_33([1, 3, 3]) → True
+#     has_33([1, 3, 1, 3]) → False
+#     has_33([3, 1, 3]) → False
+def has_33(list_nums):
+    for i, num in enumerate(list_nums[:-1]):
+        if num == 3 and list_nums[i+1] == 3:
+            return True
+    return False
+print(has_33([1, 3, 3]))
+print(has_33([1, 3, 1, 3]))
+print(has_33([3, 1, 3]))
+print(has_33([3, 1, 3, 1, 3, 3, 1]))
+print("-------------------")
+
+# PAPER DOLL: Given a string, return a string where for every character in the original there are three characters
+# paper_doll('Hello') --> 'HHHeeellllllooo'
+# paper_doll('Mississippi') --> 'MMMiiissssssiiippppppiii'
+def paper_doll(word):
+    return "".join( n*3 for n in word)
+print(paper_doll('Hello'))
+print(paper_doll('Mississippi'))
+print("-------------------")
+
+# BLACKJACK: Given three integers between 1 and 11, if their sum is less than or equal to 21, return their sum.
+# If their sum exceeds 21 and there's an eleven, reduce the total sum by 10. Finally, if the sum (even after adjustment) exceeds 21, return 'BUST'
+# blackjack(5,6,7) --> 18
+# blackjack(9,9,9) --> 'BUST'
+# blackjack(9,9,11) --> 19
+def blackjack(*arg):
+    d=sum(arg)
+    if d <= 21:
+        return d
+    elif 11 in arg and d <= 31:
+       return d-10
+    else:
+        return "BUST"
+print(blackjack(5,6,7))
+print(blackjack(9,9,9))
+print(blackjack(9,9,11))
